@@ -6,8 +6,14 @@ header {
 	background-repeat: no-repeat;
 	background-size: 1200px 500px;
 	background-position: center;
+	height: auto;
+	
 }
 
 h3 {
 	margin-top: 30px;
+}
+
+img {
+	height: auto;
 }

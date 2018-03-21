@@ -8,7 +8,7 @@ const Card = props => (
 	<div onClick={ () => {
 			props.selectCard(props.id);
 		}} className="img-container">
-		<img alt={props.name} src={props.image} className="select_card"
+		<img alt={props.name} src={props.image} className="select_card img-fluid"
 		/>
 	
 	</div>
