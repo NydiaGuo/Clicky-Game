@@ -100,7 +100,7 @@ class App extends Component {
 		return (
 			<div>
 				<Navbar 
-					className="navbar" 
+					className="navbar fixed-top" 
 					message={this.state.message}
 					curScore={this.state.curScore}
 					topScore={this.state.topScore}
