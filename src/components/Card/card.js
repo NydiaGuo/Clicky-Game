@@ -5,6 +5,7 @@ const Card = props => (
 <div className="card">
 	<div onClick={ () => {
 			console.log(props);
+			console.log(props.shuffleCard);
 			props.selectCard(props.id);
 		}} className="img-container">
 		<img alt={props.name} src={props.image} className="select_card"

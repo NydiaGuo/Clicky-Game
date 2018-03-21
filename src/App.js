@@ -15,84 +15,86 @@ class App extends Component {
 		card: card
 	};
 
-	//once click on the images:
-	//1. Have not clicked yet(game continues): 
-	//  1.1 Fliter the clicked one to another new array
-	//	1.2 shuffle the new array
-	//  1.3 push the shffled new array to the old array
-	//  1.4 Add Score and Top Score pionts by one
-	//2. Have clicked:
-	//  2.1 Score pionts back to ZERO, Top Score stays the highest
-	//  2.2 images run randmonly
-
+	//trigger this function once the player clicked any cards
 	selectCard = id => {
+		// go through to each cards
 		this.state.card.forEach((image) => {
+			//If the image id will match the the selected card id
 			if (image.id === id) {
-
+				//call the resetGame function if the card has been clicked before
 				if (image.clicked) {
+					this.setState({ message: "You lost! This card has clicked before!"});					
 					this.resetGame();
 					return;
 				}
+				//update the scores if the card hasn't clicked
 				else {
 					this.updateScore();
+					//Set the clciked card to true
 					image.clicked = true;
+					//Increase the Score by one point if the card is the first click
 					this.setState({ curScore: this.state.curScore + 1});
-
+					//If the topScore is higher than Score, keep the topScore as the highest
 					if (this.state.curScore >= this.state.topScore) {
-					this.highestScore();
+						this.highestScore();
 					}
 				}
 
 			}
 	
 		});
+		//call the shuffleCard function after the player each clickes
+		this.shuffleCard(card);
 	};
 
+//random card function
 	shuffleCard = (array) => {
-		let shuffle = [], length = array.length, i;
-		while (length) {
-			i = Math.floor(Math.random() * array.length);
-			if (i in array) {
-				shuffle.push(array[i]);
-				delete array[i];
-				length--;
-			}
+
+		let shuffle = array.length;
+		let temp;
+		let index;
+		//while there are elements in the card array
+		while(shuffle > 0) {
+			//Pick a random index from the card array
+			index = Math.floor(Math.random() * shuffle);
+			//Decrease it by one
+			shuffle--;
+			//swap the last element with it
+			temp = array[shuffle];
+			array[shuffle] = array[index];
+			array[index] = temp;
 		}
-		this.setState({ card: shuffle });
+		//return the new random array
+		return array;
+
 	};
 
+//Increasing the Score by one for each time the player hasn't clciked the same card
 	updateScore = () => {
 		this.setState((newState) => ({
 			curScore: newState.curScore + 1
 		}))
 	};
 
+//Increasing the topScore by one for each time the player hasn't clciked the same card
 	highestScore = () => {
 		this.setState((newState) => ({
 			topScore: newState.topScore + 1
 		}))
 	};	
 
-		// const card = this.state.card.filter(card => card.id !== id);
-
-		// 	this.setState({ card });
-		// 	this.setState({ 
-		// 		curScore: this.state.curScore + 1,
-		// 		topScore: this.state.topScore + 1  
-		// 	});
-		// 	console.log(card.length);
-
-
-
+//Reset the game once the player clicked the same card
 	resetGame = () => {
+		//set each card to false
 		this.state.card.forEach((image) => {
 			image.clicked = false;
 		})
-		this.setState({ curScore: 0 });
+		//set the Score back to 0
+		this.setState({ 
+			// message: "Click an image to begin!",
+			curScore: 0
+		 });
 	};
-
-
-
 
 	render() {
 		return (
@@ -109,19 +111,16 @@ class App extends Component {
  					{this.state.card.map(card => (
 			 			<Card 
 			 					selectCard={this.selectCard}
-			 					shuffleCard={this.shuffleCard}
+			 					shuffleCard={ () => this.shuffleCard(this.state.card)}
 								key={card.id}
 								id={card.id}
 								clicked={card.clicked}
 				 				image={card.image}
-
 			 				/>
-		 			
+		
 					))}
-
 				</div>
 
-				
 			</div>
 
 			);
