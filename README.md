@@ -8,4 +8,10 @@ This is a memory game with React. The idea of this game is to click on any of th
 
 ## Demo
 
+![surveypage](images/survey.gif)
+
 ## Technologies used 
+- [JSON](https://www.json.org/)
+- [React.js](https://reactjs.org/)
+- [yarn NPM package](https://www.npmjs.com/package/yarn)
+- [Bootstrap](https://getbootstrap.com/)
