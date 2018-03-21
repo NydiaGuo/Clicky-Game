@@ -30,18 +30,21 @@ class App extends Component {
 			if (image.id === id) {
 
 				if (image.clicked) {
-					this.setState({});
 					this.resetGame();
-					return false;
-				} else {
+					return;
+				}
+				else {
 					this.updateScore();
 					image.clicked = true;
-				} if (this.state.curScore >= this.state.topScore) {
+					this.setState({ curScore: this.state.curScore + 1});
+
+					if (this.state.curScore >= this.state.topScore) {
 					this.highestScore();
+					}
 				}
 
 			}
-
+	
 		});
 	};
 
@@ -66,7 +69,7 @@ class App extends Component {
 
 	highestScore = () => {
 		this.setState((newState) => ({
-			topScore: newState.topScore
+			topScore: newState.topScore + 1
 		}))
 	};	
 
