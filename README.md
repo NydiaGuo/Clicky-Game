@@ -9,7 +9,7 @@ The idea of this game is to click on any of the cards without clicking on the sa
 
 ## Demo
 
-![Clicky Game](../click-game.gif)
+![Clicky Game](/public/click-game.gif)
 
 ## Technologies used 
 - [JSON](https://www.json.org/)
