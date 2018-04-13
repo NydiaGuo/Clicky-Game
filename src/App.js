@@ -23,7 +23,6 @@ class App extends Component {
 			if (image.id === id) {
 				//call the resetGame function if the card has been clicked before
 				if (image.clicked) {
-					this.setState({ message: "You lost! This card has clicked before!"});					
 					this.resetGame();
 					return;
 				}
@@ -91,9 +90,8 @@ class App extends Component {
 		})
 		//set the Score back to 0
 		this.setState({ 
-			// message: "Click an image to begin!",
 			curScore: 0
-		 });
+		 })
 	};
 
 	render() {
@@ -123,7 +121,7 @@ class App extends Component {
 
 			</div>
 
-			);
+		);
 	};
 }
 
