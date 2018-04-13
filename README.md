@@ -1,4 +1,4 @@
-# React-Clicky-Game
+# Clicky-Game
 
 ## Overview
 
