@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 
 const Navbar = props => {
+
 	return (
 		<nav className="navbar fixed-top navbar-dark bg-danger">
 			<a className="navbar-brand ml-4 pl-4" href="/"><h2>Clicky Game</h2></a>

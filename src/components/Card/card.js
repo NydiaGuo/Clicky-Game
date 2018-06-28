@@ -2,8 +2,9 @@ import React from "react";
 import "./Card.css";
 
 const Card = props => (
+
 <div className="card">
-{//call the sekectCard function once the player clickes on this img-container 
+{//call the sekectCard function once the player clickes on this img-container
 }
 	<div onClick={ () => {
 			props.selectCard(props.id);
