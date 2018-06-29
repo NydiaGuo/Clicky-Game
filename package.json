@@ -11,7 +11,7 @@
     "eject": "react-scripts eject",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
-    "deploy": "master -d build"
+    "deploy": "npm run build&&gh-pages -d build"
   },
   
   "author": "",
